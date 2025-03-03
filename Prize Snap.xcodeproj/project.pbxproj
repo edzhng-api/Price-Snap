@@ -14,6 +14,8 @@
 		C71255362D6FA33700536BF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C71255352D6FA33700536BF7 /* GoogleService-Info.plist */; };
 		C71255382D6FA36800536BF7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71255372D6FA36800536BF7 /* HomeView.swift */; };
 		C712553A2D6FA90A00536BF7 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71255392D6FA90A00536BF7 /* Product.swift */; };
+		C712553C2D762D5900536BF7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C712553B2D762D5900536BF7 /* RegisterView.swift */; };
+		C712553E2D762D7F00536BF7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C712553D2D762D7F00536BF7 /* User.swift */; };
 		C7600B152D6E43BD001C3781 /* Prize_SnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7600B142D6E43BD001C3781 /* Prize_SnapApp.swift */; };
 		C7600B172D6E43BD001C3781 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7600B162D6E43BD001C3781 /* ContentView.swift */; };
 		C7600B192D6E43BF001C3781 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7600B182D6E43BF001C3781 /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 		C71255352D6FA33700536BF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Prize Snap/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C71255372D6FA36800536BF7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C71255392D6FA90A00536BF7 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		C712553B2D762D5900536BF7 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		C712553D2D762D7F00536BF7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C7600B112D6E43BD001C3781 /* Prize Snap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Prize Snap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7600B142D6E43BD001C3781 /* Prize_SnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prize_SnapApp.swift; sourceTree = "<group>"; };
 		C7600B162D6E43BD001C3781 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 		C7600B282D6E4961001C3781 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C712553D2D762D7F00536BF7 /* User.swift */,
 				C7600B262D6E4730001C3781 /* Constants.swift */,
 				C71255392D6FA90A00536BF7 /* Product.swift */,
 			);
@@ -100,6 +105,7 @@
 				C7600B162D6E43BD001C3781 /* ContentView.swift */,
 				C71255372D6FA36800536BF7 /* HomeView.swift */,
 				C712552C2D6FA1F700536BF7 /* LoginView.swift */,
+				C712553B2D762D5900536BF7 /* RegisterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +192,8 @@
 				C7600B172D6E43BD001C3781 /* ContentView.swift in Sources */,
 				C7600B152D6E43BD001C3781 /* Prize_SnapApp.swift in Sources */,
 				C712552D2D6FA1F700536BF7 /* LoginView.swift in Sources */,
+				C712553C2D762D5900536BF7 /* RegisterView.swift in Sources */,
+				C712553E2D762D7F00536BF7 /* User.swift in Sources */,
 				C71255382D6FA36800536BF7 /* HomeView.swift in Sources */,
 				C7600B272D6E4730001C3781 /* Constants.swift in Sources */,
 				C712553A2D6FA90A00536BF7 /* Product.swift in Sources */,
