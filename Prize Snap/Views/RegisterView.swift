@@ -1,19 +1,21 @@
 //
-//  LoginView.swift
+//  RegisterView.swift
 //  Prize Snap
 //
-//  Created by Filip Cyran (student LM) on 2/25/25.
+//  Created by Filip Cyran (student LM) on 2/26/25.
 //
 
 import SwiftUI
 import FirebaseAuth
 
-struct LoginView: View {
+struct RegisterView: View {
     @EnvironmentObject var user: User
+    @State var username: String = ""
+    @State var password = ""
     var body: some View {
         NavigationView {
             VStack {
-                Text("LOGIN")
+                Text("REGISTER")
                     .font(Constants.titleFont)
                     .padding(.top)
                 Image("logoapp")
@@ -35,10 +37,10 @@ struct LoginView: View {
                 
                 Button(action: {
                     Task {
-                        await loginUser()
+                        await createUser()
                     }
                 }, label: {
-                    Text("Login")
+                    Text("Register")
                         .font(Constants.titleFont)
                         .foregroundColor(.white)
                         .padding(.horizontal, 125)
@@ -47,27 +49,25 @@ struct LoginView: View {
                         .cornerRadius(12)
                 })
                 
-                NavigationLink(destination: RegisterView()) {
-                    Text("Don't have an account yet?\n Create free account here. ")
+                NavigationLink(destination: LoginView()) {
+                    Text("Already have an account?\n Login here.")
                         .foregroundColor(.black)
                         .font(Constants.captionFont)
                 }
                 .padding(.bottom)
                 
+                
             }
         }.navigationBarBackButtonHidden(true)
     }
-    func loginUser() async {
-        do {
-            try await Auth.auth().signIn(withEmail: user.email, password: user.password)
+    func createUser() async {
+        if let auth = try? await Auth.auth().createUser(withEmail: user.email, password: user.password) {
             user.isUserAuth = true
-        } catch let e as Error {
-            print(e)
         }
     }
 }
 
 #Preview {
-    LoginView()
+    RegisterView()
         .environmentObject(User())
 }
