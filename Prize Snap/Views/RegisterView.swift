@@ -10,8 +10,8 @@ import FirebaseAuth
 
 struct RegisterView: View {
     @EnvironmentObject var user: User
-    @State var username: String = ""
-    @State var password = ""
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     var body: some View {
         NavigationView {
             VStack {
@@ -57,14 +57,32 @@ struct RegisterView: View {
                 .padding(.bottom)
                 
                 
+            }.alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Register Failed"),
+                    message: Text(alertMessage),
+                    dismissButton: .default(Text("OK"))
+                )
             }
         }.navigationBarBackButtonHidden(true)
     }
     func createUser() async {
-        if let auth = try? await Auth.auth().createUser(withEmail: user.email, password: user.password) {
+        do {
+            let authResult = try await Auth.auth().createUser(withEmail: user.email, password: user.password)
             user.isUserAuth = true
+            
+        } catch let error as NSError {
+            if error.code == AuthErrorCode.emailAlreadyInUse.rawValue {
+                alertMessage = "The email is already in use."
+            } else if error.code == AuthErrorCode.weakPassword.rawValue {
+                alertMessage = "Password is too weak."
+            } else {
+                alertMessage = "An unknown error occurred. Please try again."
+            }
+            showAlert = true
         }
     }
+
 }
 
 #Preview {
