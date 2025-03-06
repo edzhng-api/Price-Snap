@@ -10,12 +10,16 @@ import FirebaseAuth
 
 struct LoginView: View {
     @EnvironmentObject var user: User
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+
     var body: some View {
         NavigationView {
             VStack {
                 Text("LOGIN")
                     .font(Constants.titleFont)
                     .padding(.top)
+                
                 Image("logoapp")
                     .resizable().frame(width: 200, height: 200)
                     .scaledToFit()
@@ -25,7 +29,6 @@ struct LoginView: View {
                 TextField("Email", text: $user.email)
                     .overlay(Rectangle().frame(height: 1).foregroundColor(.gray), alignment: .bottom)
                     .padding(25)
-                
                 
                 SecureField("Password", text: $user.password)
                     .overlay(Rectangle().frame(height: 1).foregroundColor(.gray), alignment: .bottom)
@@ -55,14 +58,32 @@ struct LoginView: View {
                 .padding(.bottom)
                 
             }
-        }.navigationBarBackButtonHidden(true)
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Login Failed"),
+                    message: Text(alertMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
+        }
+        .navigationBarBackButtonHidden(true)
     }
+    
     func loginUser() async {
         do {
             try await Auth.auth().signIn(withEmail: user.email, password: user.password)
             user.isUserAuth = true
-        } catch let e as Error {
-            print(e)
+        } catch let error as NSError {
+            if error.code == AuthErrorCode.wrongPassword.rawValue {
+                alertMessage = "The password you entered is incorrect."
+            } else if error.code == AuthErrorCode.invalidEmail.rawValue {
+                alertMessage = "The email address is not valid."
+            } else if error.code == AuthErrorCode.userNotFound.rawValue {
+                alertMessage = "No user found with this email address."
+            } else {
+                alertMessage = "An unknown error occurred. Please try again."
+            }
+            showAlert = true
         }
     }
 }
