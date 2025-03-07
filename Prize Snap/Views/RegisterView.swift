@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 struct RegisterView: View {
     @EnvironmentObject var user: User
@@ -26,12 +27,19 @@ struct RegisterView: View {
                 
                 TextField("Email", text: $user.email)
                     .overlay(Rectangle().frame(height: 1).foregroundColor(.gray), alignment: .bottom)
-                    .padding(25)
+                    .padding(.horizontal,25)
+                    .padding(.vertical, 10)
+                
+                TextField("Username", text: $user.username)
+                    .overlay(Rectangle().frame(height: 1).foregroundColor(.gray), alignment: .bottom)
+                    .padding(.horizontal,25)
+                    .padding(.vertical, 10)
                 
                 
                 SecureField("Password", text: $user.password)
                     .overlay(Rectangle().frame(height: 1).foregroundColor(.gray), alignment: .bottom)
-                    .padding(.horizontal, 25)
+                    .padding(.horizontal,25)
+                    .padding(.vertical, 10)
                 
                 Spacer()
                 
@@ -67,21 +75,28 @@ struct RegisterView: View {
         }.navigationBarBackButtonHidden(true)
     }
     func createUser() async {
-        do {
-            let authResult = try await Auth.auth().createUser(withEmail: user.email, password: user.password)
-            user.isUserAuth = true
-            
-        } catch let error as NSError {
-            if error.code == AuthErrorCode.emailAlreadyInUse.rawValue {
-                alertMessage = "The email is already in use."
-            } else if error.code == AuthErrorCode.weakPassword.rawValue {
-                alertMessage = "Password is too weak."
-            } else {
-                alertMessage = "An unknown error occurred. Please try again."
-            }
-            showAlert = true
-        }
-    }
+           do {
+               let authResult = try await Auth.auth().createUser(withEmail: user.email, password: user.password)
+               user.isUserAuth = true
+               
+               let db = Firestore.firestore()
+               let userRef = db.collection("users").document(authResult.user.uid)
+               try await userRef.setData([
+                   "username": user.username,
+                   "email": user.email
+               ])
+               
+           } catch let error as NSError {
+               if error.code == AuthErrorCode.emailAlreadyInUse.rawValue {
+                   alertMessage = "The email is already in use."
+               } else if error.code == AuthErrorCode.weakPassword.rawValue {
+                   alertMessage = "Password is too weak."
+               } else {
+                   alertMessage = "An unknown error occurred. Please try again."
+               }
+               showAlert = true
+           }
+       }
 
 }
 
