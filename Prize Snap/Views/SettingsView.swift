@@ -11,12 +11,17 @@ struct SettingsView: View {
     @EnvironmentObject var user: User
     @State private var errorMessage: String? = nil
     @State private var showAlert = false
+    @State private var showDeleteAlert = false
     @State private var isDeleting = false
 
     var body: some View {
         NavigationView {
             List {
                 Section(header: Text("Account Settings")) {
+                    Text(user.username)
+                        .font(Constants.textFont)
+                        .shadow(radius: 2)
+
                     Button(action: {
                         Task {
                             await signOut()
@@ -36,23 +41,24 @@ struct SettingsView: View {
                     }
 
                     Button(action: {
-                        Task {
-                            await deleteAccount()
-                        }
+                        showDeleteAlert = true
                     }) {
                         Text("Delete Account")
                             .foregroundColor(.red)
                             .font(Constants.textFont)
                             .shadow(radius: 2)
                     }
-                    .alert(isPresented: $showAlert) {
+                    .alert(isPresented: $showDeleteAlert) {
                         Alert(
-                            title: Text("Error"),
-                            message: Text(errorMessage ?? "Unknown error"),
-                            dismissButton: .default(Text("OK"))
+                            title: Text("Are you sure you want to delete the account?"),
+                            primaryButton: .destructive(Text("OK"), action: {
+                                Task {
+                                    await deleteAccount()
+                                }
+                            }),
+                            secondaryButton: .cancel()
                         )
                     }
-                    .disabled(isDeleting)
                 }
 
                 Section(header: Text("App Settings")) {
@@ -83,6 +89,7 @@ struct SettingsView: View {
             .navigationTitle("Settings")
         }
     }
+    
 
     func signOut() async {
         do {
@@ -121,4 +128,6 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .environmentObject(User())
 }
+
