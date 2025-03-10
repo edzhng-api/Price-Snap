@@ -23,6 +23,11 @@ struct ContentView: View {
                     Image(systemName: "cart")
                     Text("Cart")
                 }
+            ProductSearch()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
+                }
             SettingsView(permissionGranted: $permissionGranted)
                 .tabItem {
                     Image(systemName: "gear")
