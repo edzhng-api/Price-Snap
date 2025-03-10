@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		437CAE302D7F6C6600B7FF81 /* ProductSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437CAE2F2D7F6C6600B7FF81 /* ProductSearch.swift */; };
+		437CAE332D7F6CC600B7FF81 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 437CAE322D7F6CC600B7FF81 /* FirebaseFirestore */; };
+		437CAE372D7F6D2000B7FF81 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437CAE362D7F6D2000B7FF81 /* SettingsView.swift */; };
 		C712552D2D6FA1F700536BF7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C712552C2D6FA1F700536BF7 /* LoginView.swift */; };
 		C71255302D6FA2A300536BF7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C712552F2D6FA2A300536BF7 /* FirebaseAuth */; };
 		C71255322D6FA2A300536BF7 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = C71255312D6FA2A300536BF7 /* FirebaseCore */; };
@@ -24,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		437CAE2F2D7F6C6600B7FF81 /* ProductSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearch.swift; sourceTree = "<group>"; };
+		437CAE362D7F6D2000B7FF81 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C712552C2D6FA1F700536BF7 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C71255352D6FA33700536BF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Prize Snap/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C71255372D6FA36800536BF7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -44,6 +49,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C71255322D6FA2A300536BF7 /* FirebaseCore in Frameworks */,
+				437CAE332D7F6CC600B7FF81 /* FirebaseFirestore in Frameworks */,
 				C71255302D6FA2A300536BF7 /* FirebaseAuth in Frameworks */,
 				C71255342D6FA2A300536BF7 /* FirebaseStorage in Frameworks */,
 			);
@@ -52,12 +58,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		437CAE312D7F6CC600B7FF81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C7600B082D6E43BD001C3781 = {
 			isa = PBXGroup;
 			children = (
 				C71255352D6FA33700536BF7 /* GoogleService-Info.plist */,
 				C7600B132D6E43BD001C3781 /* Prize Snap */,
 				C7600B122D6E43BD001C3781 /* Products */,
+				437CAE312D7F6CC600B7FF81 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,10 +116,12 @@
 		C7600B292D6E496A001C3781 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				437CAE362D7F6D2000B7FF81 /* SettingsView.swift */,
 				C7600B162D6E43BD001C3781 /* ContentView.swift */,
 				C71255372D6FA36800536BF7 /* HomeView.swift */,
 				C712552C2D6FA1F700536BF7 /* LoginView.swift */,
 				C712553B2D762D5900536BF7 /* RegisterView.swift */,
+				437CAE2F2D7F6C6600B7FF81 /* ProductSearch.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -130,6 +146,7 @@
 				C712552F2D6FA2A300536BF7 /* FirebaseAuth */,
 				C71255312D6FA2A300536BF7 /* FirebaseCore */,
 				C71255332D6FA2A300536BF7 /* FirebaseStorage */,
+				437CAE322D7F6CC600B7FF81 /* FirebaseFirestore */,
 			);
 			productName = "Prize Snap";
 			productReference = C7600B112D6E43BD001C3781 /* Prize Snap.app */;
@@ -194,9 +211,11 @@
 				C712552D2D6FA1F700536BF7 /* LoginView.swift in Sources */,
 				C712553C2D762D5900536BF7 /* RegisterView.swift in Sources */,
 				C712553E2D762D7F00536BF7 /* User.swift in Sources */,
+				437CAE372D7F6D2000B7FF81 /* SettingsView.swift in Sources */,
 				C71255382D6FA36800536BF7 /* HomeView.swift in Sources */,
 				C7600B272D6E4730001C3781 /* Constants.swift in Sources */,
 				C712553A2D6FA90A00536BF7 /* Product.swift in Sources */,
+				437CAE302D7F6C6600B7FF81 /* ProductSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +351,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Prize Snap/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to find products near you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -360,6 +380,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Prize Snap/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to find products near you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -413,6 +434,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		437CAE322D7F6CC600B7FF81 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C712552E2D6FA2A300536BF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		C712552F2D6FA2A300536BF7 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C712552E2D6FA2A300536BF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
