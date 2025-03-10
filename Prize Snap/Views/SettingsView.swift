@@ -4,15 +4,29 @@
 //
 //  Created by Filip Cyran (student LM) on 3/2/25.
 //
+
+    
+
+
 import SwiftUI
 import FirebaseAuth
+import UserNotifications
 
 struct SettingsView: View {
     @EnvironmentObject var user: User
+    @Binding var permissionGranted: Bool
     @State private var errorMessage: String? = nil
     @State private var showAlert = false
     @State private var showDeleteAlert = false
     @State private var isDeleting = false
+    @State private var isNotificationsExpanded = false
+    @State private var isNotificationsEnabled: Bool
+    
+    init(permissionGranted: Binding<Bool>) {
+        _permissionGranted = permissionGranted
+        let savedPreference = UserDefaults.standard.bool(forKey: "notificationsEnabled")
+        _isNotificationsEnabled = State(initialValue: savedPreference)
+    }
 
     var body: some View {
         NavigationView {
@@ -32,13 +46,6 @@ struct SettingsView: View {
                             .font(Constants.textFont)
                             .shadow(radius: 2)
                     }
-                    .alert(isPresented: $showAlert) {
-                        Alert(
-                            title: Text("Error"),
-                            message: Text(errorMessage ?? "Unknown error"),
-                            dismissButton: .default(Text("OK"))
-                        )
-                    }
 
                     Button(action: {
                         showDeleteAlert = true
@@ -48,36 +55,53 @@ struct SettingsView: View {
                             .font(Constants.textFont)
                             .shadow(radius: 2)
                     }
-                    .alert(isPresented: $showDeleteAlert) {
-                        Alert(
-                            title: Text("Are you sure you want to delete the account?"),
-                            primaryButton: .destructive(Text("OK"), action: {
-                                Task {
-                                    await deleteAccount()
-                                }
-                            }),
-                            secondaryButton: .cancel()
-                        )
-                    }
                 }
 
                 Section(header: Text("App Settings")) {
                     Button(action: {
-                        
+                        withAnimation {
+                            isNotificationsExpanded.toggle()
+                        }
                     }) {
-                        Text("Notifications")
-                            .font(Constants.textFont)
-                            .shadow(radius: 2)
+                        HStack {
+                            Text("Notifications")
+                                .font(Constants.textFont)
+                                .shadow(radius: 2)
+                            Spacer()
+                            Image(systemName: isNotificationsExpanded ? "chevron.down" : "chevron.right")
+                        }
                     }
-                    Button(action: {
-                        
-                    }) {
-                        Text("Privacy")
-                            .font(Constants.textFont)
-                            .shadow(radius: 2)
+                    if isNotificationsExpanded {
+                        VStack(alignment: .leading) {
+                            Toggle(isOn: $isNotificationsEnabled) {
+                                Text("Enable Notifications")
+                                    .font(Constants.textFont)
+                                    .shadow(radius: 2)
+                                    .foregroundColor(.primary)
+                            }
+                            .onChange(of: isNotificationsEnabled) { newValue in
+                                UserDefaults.standard.set(newValue, forKey: "notificationsEnabled")
+                                
+                                if newValue {
+                                    requestNotificationPermissions()
+                                } else {
+                                    cancelNotification()
+                                }
+                            }
+
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                            }) {
+                                Text("Notification Settings")
+                                    .font(Constants.textFont)
+                                    .shadow(radius: 2)
+                            }
+                        }
+                        .padding(.top, 5)
                     }
+
                     Button(action: {
-                        
+                        // About action
                     }) {
                         Text("About")
                             .font(Constants.textFont)
@@ -89,7 +113,6 @@ struct SettingsView: View {
             .navigationTitle("Settings")
         }
     }
-    
 
     func signOut() async {
         do {
@@ -124,10 +147,26 @@ struct SettingsView: View {
         }
         isDeleting = false
     }
+
+    private func requestNotificationPermissions() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                permissionGranted = true
+            } else {
+                print("Notification permission denied: \(error?.localizedDescription ?? "Unknown error")")
+            }
+        }
+    }
+
+    private func cancelNotification() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(permissionGranted: .constant(false))
         .environmentObject(User())
 }
+
+
 
