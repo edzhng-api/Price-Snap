@@ -10,6 +10,7 @@ import UserNotifications
 
 struct ContentView: View {
     @State private var permissionGranted = false
+    
     var body: some View {
         TabView {
             HomeView()
@@ -22,41 +23,34 @@ struct ContentView: View {
                     Image(systemName: "cart")
                     Text("Cart")
                 }
-            SettingsView()
+            SettingsView(permissionGranted: $permissionGranted)
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
-            
-        }.onAppear {
+        }
+        .onAppear {
             checkNotificationPermissions()
         }
         .onChange(of: permissionGranted) { _ in
             if permissionGranted {
                 scheduleNotification()
+            } else {
+                cancelNotification()
             }
         }
     }
     
     private func checkNotificationPermissions() {
-            UNUserNotificationCenter.current().getNotificationSettings { settings in
-                if settings.authorizationStatus == .authorized {
-                    permissionGranted = true
-                } else {
-                    requestNotificationPermissions()
-                }
-            }
-        }
-
-    private func requestNotificationPermissions() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-            if success {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized {
                 permissionGranted = true
             } else {
-                print("Notification permission denied: \(error?.localizedDescription ?? "Unknown error")")
+                permissionGranted = false
             }
         }
     }
+
     private func scheduleNotification() {
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = "Reminder"
@@ -72,7 +66,10 @@ struct ContentView: View {
             }
         }
     }
-
+    
+    private func cancelNotification() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
 }
 
 #Preview {
