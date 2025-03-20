@@ -10,22 +10,23 @@ import UserNotifications
 
 struct ContentView: View {
     @State private var permissionGranted = false
-    
+    @State var products: [Product] = []
+    @State var store: Store
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(products: $products, store: $store)
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
                 }
-            HomeView()
+            ShoppingListView(products: $products)
                 .tabItem {
                     Image(systemName: "cart")
                     Text("Cart")
                 }
             ProductSearch()
                 .tabItem {
-                    Image(systemName: "magnifyingglass")
+                    Image(systemName: "safari")
                     Text("Search")
                 }
             SettingsView(permissionGranted: $permissionGranted)
@@ -61,7 +62,7 @@ struct ContentView: View {
         notificationContent.title = "Reminder"
         notificationContent.body = "This is a reminder!"
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3600, repeats: true)
 
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
 
@@ -78,6 +79,12 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
-        .environmentObject(User())
+    ContentView(
+        products: [Product](),
+        store: Store(name: "GiantData", products: []) 
+    )
+    .environmentObject(User())
 }
+
+
+
