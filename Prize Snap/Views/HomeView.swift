@@ -9,86 +9,125 @@ import SwiftUI
 struct HomeView: View {
     @Binding var products: [Product]
     @Binding var store: Store
+    @State private var allStores: [Store] = []
 
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                    Text("HOT DEALS")
-                        .padding(.leading, 20)
-                        .bold()
-                        .font(Constants.titleFont)
-                    Spacer()
-                    NavigationLink(destination: EmptyView()) {
-                        Text("See More")
-                            .padding(.trailing, 20)
-                            .font(Constants.textFont)
-                    }
-                }
-
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        // TODO: Add deal items here
-                    }
-                    .padding(.horizontal)
-                }
-
-                HStack {
-                    Text("For You")
-                        .bold()
-                        .font(Constants.titleFont)
-                        .padding(.leading, 20)
-                    Spacer()
-                }
-
                 ScrollView {
-                    ForEach(products, id: \.id) { product in
-                        HStack {
-                            AsyncImage(url: URL(string: product.image)) { phase in
-                                if let image = phase.image {
-                                    image
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 60, height: 60)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                } else if phase.error != nil {
-                                    Image(systemName: "photo")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 60, height: 60)
-                                        .foregroundColor(.gray)
-                                } else {
-                                    ProgressView()
-                                        .frame(width: 60, height: 60)
-                                }
-                            }
+                    HStack {
+                        Text("HOT DEALS")
+                            .padding(.leading, 20)
+                            .bold()
+                            .font(Constants.titleFont)
+                        Spacer()
+                    }
 
-                            VStack(alignment: .leading) {
-                                Text(product.name)
-                                    .font(.headline)
-                                Text("$\(product.price, specifier: "%.2f")")
-                                    .font(.subheadline)
-                                Link("Buy Now", destination: URL(string: product.link)!)
-                                    .font(.subheadline)
-                                    .foregroundColor(.blue)
-                            }
-                            Spacer()
-                            
-                            Image(getStoreLogo(for: product.store))
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 40)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
-                                .onAppear {
-                                    if UIImage(named: getStoreLogo(for: product.store)) == nil {
-                                        print("Store logo not found for \(product.store), using default logo.")
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(getTopDeals(), id: \.id) { product in
+                                VStack {
+                                    AsyncImage(url: URL(string: product.image)) { phase in
+                                        if let image = phase.image {
+                                            image
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 80, height: 80)
+                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                        } else if phase.error != nil {
+                                            Image(systemName: "photo")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 80, height: 80)
+                                                .foregroundColor(.gray)
+                                        } else {
+                                            ProgressView()
+                                                .frame(width: 80, height: 80)
+                                        }
+                                    }
+                                    
+                                    HStack {
+                                        Text(product.name)
+                                            .font(.headline)
+                                            .multilineTextAlignment(.center)
+                                        
+                                        Spacer()
+
+                                        Text("$\(product.price, specifier: "%.2f")")
+                                            .font(.subheadline)
+                                            .foregroundColor(.green)
+                                    }
+                                    HStack {
+                                        Spacer()
+                                        Text("Save \(discountPercentage(for: product), specifier: "%.1f")%")
+                                            .font(.caption)
+                                            .bold()
+                                            .foregroundColor(.red)
                                     }
                                 }
+                                .frame(width: 120)
+                                .padding()
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                            }
                         }
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
+                        .padding(.horizontal)
                     }
+
+                    HStack {
+                        Text("For You")
+                            .bold()
+                            .font(Constants.titleFont)
+                            .padding(.leading, 20)
+                        Spacer()
+                    }
+                    ForEach(sortedProducts(), id: \.id) { product in
+                        NavigationLink(destination: ProductDetailView(product: product, likedProductIds: .constant([]))) {
+                            HStack {
+                                AsyncImage(url: URL(string: product.image)) { phase in
+                                    if let image = phase.image {
+                                        image
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 60, height: 60)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    } else if phase.error != nil {
+                                        Image(systemName: "photo")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 60, height: 60)
+                                            .foregroundColor(.gray)
+                                    } else {
+                                        ProgressView()
+                                            .frame(width: 60, height: 60)
+                                    }
+                                }
+
+                                VStack(alignment: .leading) {
+                                    Text(product.name)
+                                        .font(.headline)
+                                    Text("$\(product.price, specifier: "%.2f")")
+                                        .font(.subheadline)
+                                    Text("Save \(discountPercentage(for: product), specifier: "%.1f")%")
+                                        .font(.caption)
+                                        .foregroundColor(.red)
+                                    Link("Buy Now", destination: URL(string: product.link)!)
+                                        .font(.subheadline)
+                                        .foregroundColor(.blue)
+                                }
+                                Spacer()
+                                
+                                Image(getStoreLogo(for: product.store))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                            }
+                            .padding()
+                            .background(Color(.systemGray6))
+                            .cornerRadius(10)
+                        }
+                    }.padding(.horizontal)
                 }
             }
             .navigationTitle("Home")
@@ -101,35 +140,35 @@ struct HomeView: View {
 
     func getStoreLogo(for storeName: String) -> String {
         switch storeName {
-        case "Giant":
-            return "giant_logo"
-        case "Walmart":
-            return "walmart_logo"
-        case "Costco":
-            return "costco_logo"
-        case "Amazon":
-            return "amazon_logo"
-        default:
-            return "default_logo"
+        case "Giant": return "giant_logo"
+        case "Walmart": return "walmart_logo"
+        case "Costco": return "costco_logo"
+        case "Amazon": return "amazon_logo"
+        default: return "default_logo"
         }
     }
 
-
     func loadData() {
-        let storeFiles = ["GiantData", "WalmartData", "CostcoData", "AmazonData"]
+        let storeFiles = ["GiantData", "WalmartData", "ACMEData", "TargetData"]
         var allProducts: [Product] = []
-        var stores: [Store] = []
+        var loadedStores: [Store] = []
 
         for file in storeFiles {
             if let url = Bundle.main.url(forResource: file, withExtension: "json") {
                 do {
                     let data = try Data(contentsOf: url)
                     let decoder = JSONDecoder()
-                    let decodedStore = try decoder.decode(Store.self, from: data)
                     
+                    var decodedStore = try decoder.decode(Store.self, from: data)
+
+                    decodedStore.products = decodedStore.products.map { product in
+                        var mutableProduct = product
+                        mutableProduct.id = product.id ?? UUID()
+                        return mutableProduct
+                    }
+
                     allProducts.append(contentsOf: decodedStore.products)
-                    
-                    stores.append(decodedStore)
+                    loadedStores.append(decodedStore)
                 } catch {
                     print("Error loading \(file).json: \(error)")
                 }
@@ -140,8 +179,34 @@ struct HomeView: View {
 
         DispatchQueue.main.async {
             self.products = allProducts
-            self.store = stores.first ?? Store(name: "DefaultStore", products: [])
+            self.allStores = loadedStores
+            self.store = loadedStores.first ?? Store(name: "DefaultStore", products: [])
         }
+    }
+
+    func highestPrice(for productName: String) -> Double {
+        let allPrices = allStores.flatMap { $0.products }
+            .filter { $0.name == productName }
+            .map { $0.price }
+        
+        return allPrices.max() ?? 0
+    }
+
+    func discountPercentage(for product: Product) -> Double {
+        let highest = highestPrice(for: product.name)
+        guard highest > 0 else { return 0 }
+        return ((highest - product.price) / highest) * 100
+    }
+
+    func sortedProducts() -> [Product] {
+        return products.sorted { discountPercentage(for: $0) > discountPercentage(for: $1) }
+    }
+
+    func getTopDeals() -> [Product] {
+        return products
+            .sorted { discountPercentage(for: $0) > discountPercentage(for: $1) }
+            .prefix(10)
+            .map { $0 }
     }
 }
 
@@ -156,3 +221,4 @@ struct HomeView: View {
         ]))
     )
 }
+
