@@ -11,59 +11,41 @@ import FirebaseAuth
 
 
 struct ShoppingListView: View {
-    @Binding var products: [Product]
-    
-    // Compute total before the view body
-    var total: Double {
-        products.reduce(0) { $0 + $1.price }
-    }
-    
+    var products: [Product]  // All products
+    var likedProductIds: [UUID]  // List of liked product IDs
+
     var body: some View {
-        ZStack {
-            VStack {
-                Image(systemName: "cart.fill")
-                    .foregroundColor(.black)
-                Text("Shopping List: ")
-                    .font(Constants.titleFont)
-                    .padding()
-                
-                ScrollView {
-                    VStack {
-                        ForEach(products) { product in
-                            HStack {
-                                Image(product.picture)
-                                    .resizable()
-                                    .frame(width: 150, height: 100)
-                                
-                                VStack {
-                                    Text(product.name)
-                                        .font(Constants.textFont)
-                                    Text(product.location)
-                                        .font(Constants.textFont)
-                                    Text("$" + String(product.price))
-                                        .font(Constants.textFont)
-                                }
+        VStack {
+            Text("Liked Products")
+                .font(.largeTitle)
+                .bold()
+                .padding()
+
+            ScrollView {
+                // Filter products by checking if the product's ID is in the likedProductIds array
+                ForEach(products.filter { likedProductIds.contains($0.id) }, id: \.id) { product in
+                    HStack {
+                        AsyncImage(url: URL(string: product.image)) { phase in
+                            if let image = phase.image {
+                                image.resizable().scaledToFit().frame(width: 60, height: 60)
+                            } else {
+                                ProgressView().frame(width: 60, height: 60)
                             }
-                            Spacer()
                         }
+
+                        VStack(alignment: .leading) {
+                            Text(product.name).font(.headline)
+                            Text("$\(product.price, specifier: "%.2f")").font(.subheadline)
+                        }
+                        Spacer()
                     }
-                }
-                
-                Spacer()
-                
-                HStack {
-                    Text("Total Cost: $" + String(format: "%.2f", total))
-                        .font(Constants.textFont)
-                        .padding()
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
                 }
             }
+            .padding()
         }
+        .navigationTitle("Liked Products")
     }
-}
-
-    
-
-
-#Preview {
-    ShoppingListView(products: Binding.constant([Product(), Product(), Product()]))
 }
