@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var permissionGranted = false
     @State var products: [Product] = []
     @State var store: Store
+    @State var likedProductIds: [UUID] = []
+    
     var body: some View {
         TabView {
             HomeView(products: $products, store: $store)
@@ -19,7 +21,7 @@ struct ContentView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
-            ShoppingListView(products: $products)
+            ShoppingListView(products: products, likedProductIds: likedProductIds)
                 .tabItem {
                     Image(systemName: "cart")
                     Text("Cart")
@@ -81,10 +83,7 @@ struct ContentView: View {
 #Preview {
     ContentView(
         products: [Product](),
-        store: Store(name: "GiantData", products: []) 
+        store: Store(name: "GiantData", products: [])
     )
     .environmentObject(User())
 }
-
-
-
