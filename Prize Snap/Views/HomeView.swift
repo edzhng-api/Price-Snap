@@ -10,7 +10,7 @@ struct HomeView: View {
     @Binding var products: [Product]
     @Binding var store: Store
     @State private var allStores: [Store] = []
-
+    @Binding var likedProductIds: [UUID]
     var body: some View {
         NavigationView {
             VStack {
@@ -82,7 +82,7 @@ struct HomeView: View {
                         Spacer()
                     }
                     ForEach(sortedProducts(), id: \.id) { product in
-                        NavigationLink(destination: ProductDetailView(product: product, likedProductIds: .constant([]))) {
+                        NavigationLink(destination: ProductDetailView(product: product, likedProductIds: $likedProductIds)) {
                             HStack {
                                 AsyncImage(url: URL(string: product.image)) { phase in
                                     if let image = phase.image {
@@ -218,7 +218,7 @@ struct HomeView: View {
         ]),
         store: .constant(Store(name: "AmazonData", products: [
             Product(name: "Apple", price: 0.62, link: "https://example.com/apple", image: "https://example.com/apple.jpg", store: "AmazonData")
-        ]))
+        ])), likedProductIds: .constant([])
     )
 }
 
