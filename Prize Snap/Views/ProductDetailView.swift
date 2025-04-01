@@ -51,9 +51,15 @@ struct ProductDetailView: View {
     private func toggleLike() {
         if let index = likedProductIds.firstIndex(of: product.id) {
             likedProductIds.remove(at: index)
+            print("Product \(product.id) has been removed")
         } else {
-            likedProductIds.append(product.id)
+            if !likedProductIds.contains(product.id) {
+                likedProductIds.append(product.id)
+                print("Product \(product.id) has been added")
+            }
         }
+
+        print("Current Liked Products: \(likedProductIds)")
     }
 }
 
