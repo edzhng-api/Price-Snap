@@ -19,10 +19,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct Prize_SnapApp: App {
+    @EnvironmentObject var user: User
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(products: [Product](), store: Store(name: "AmazonData", products: [])).environmentObject(user)
         }
     }
 }
