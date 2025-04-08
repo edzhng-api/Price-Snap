@@ -26,7 +26,7 @@ struct ContentView: View {
                     Image(systemName: "cart")
                     Text("Cart")
                 }
-            ProductSearch()
+            ProductSearch(products: $products, likedProductIds: $likedProductIds)
                 .tabItem {
                     Image(systemName: "safari")
                     Text("Search")

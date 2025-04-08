@@ -19,11 +19,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct Prize_SnapApp: App {
-    @EnvironmentObject var user: User
+    @StateObject var user = User()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            ContentView(products: [Product](), store: Store(name: "AmazonData", products: [])).environmentObject(user)
+            if user.isUserAuth {
+                ContentView(products: [Product](), store: Store(name: "AmazonData", products: [])).environmentObject(user)
+            }
+            else {
+                LoginView()
+                    .environmentObject(user)
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 struct HomeView: View {
     @Binding var products: [Product]
     @Binding var store: Store
-    @State private var allStores: [Store] = []
+    @State var allStores: [Store] = []
     @Binding var likedProductIds: [UUID]
     var body: some View {
         NavigationView {
@@ -163,7 +163,7 @@ struct HomeView: View {
 
                     decodedStore.products = decodedStore.products.map { product in
                         var mutableProduct = product
-                        mutableProduct.id = product.id ?? UUID()
+                        mutableProduct.id = product.id
                         return mutableProduct
                     }
 

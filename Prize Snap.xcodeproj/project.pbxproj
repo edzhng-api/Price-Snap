@@ -10,6 +10,10 @@
 		434FE0B72D91CB640087D665 /* Scraper_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434FE0B62D91CB640087D665 /* Scraper_Test.swift */; };
 		434FE0DB2D9C623C0087D665 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434FE0DA2D9C623C0087D665 /* ProductDetailView.swift */; };
 		434FE0DD2D9C62420087D665 /* ShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434FE0DC2D9C62420087D665 /* ShoppingListView.swift */; };
+		434FE0DF2DA5A3620087D665 /* WalmartData.json in Resources */ = {isa = PBXBuildFile; fileRef = 434FE0DE2DA5A3620087D665 /* WalmartData.json */; };
+		434FE0E12DA5A36C0087D665 /* TargetData.json in Resources */ = {isa = PBXBuildFile; fileRef = 434FE0E02DA5A36C0087D665 /* TargetData.json */; };
+		434FE0E32DA5A3740087D665 /* GiantData.json in Resources */ = {isa = PBXBuildFile; fileRef = 434FE0E22DA5A3740087D665 /* GiantData.json */; };
+		434FE0E52DA5A3800087D665 /* ACMEData.json in Resources */ = {isa = PBXBuildFile; fileRef = 434FE0E42DA5A3800087D665 /* ACMEData.json */; };
 		437CAE302D7F6C6600B7FF81 /* ProductSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437CAE2F2D7F6C6600B7FF81 /* ProductSearch.swift */; };
 		437CAE332D7F6CC600B7FF81 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 437CAE322D7F6CC600B7FF81 /* FirebaseFirestore */; };
 		437CAE372D7F6D2000B7FF81 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437CAE362D7F6D2000B7FF81 /* SettingsView.swift */; };
@@ -33,6 +37,10 @@
 		434FE0B62D91CB640087D665 /* Scraper_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scraper_Test.swift; sourceTree = "<group>"; };
 		434FE0DA2D9C623C0087D665 /* ProductDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		434FE0DC2D9C62420087D665 /* ShoppingListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListView.swift; sourceTree = "<group>"; };
+		434FE0DE2DA5A3620087D665 /* WalmartData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WalmartData.json; sourceTree = "<group>"; };
+		434FE0E02DA5A36C0087D665 /* TargetData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TargetData.json; sourceTree = "<group>"; };
+		434FE0E22DA5A3740087D665 /* GiantData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GiantData.json; sourceTree = "<group>"; };
+		434FE0E42DA5A3800087D665 /* ACMEData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ACMEData.json; sourceTree = "<group>"; };
 		437CAE2F2D7F6C6600B7FF81 /* ProductSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearch.swift; sourceTree = "<group>"; };
 		437CAE362D7F6D2000B7FF81 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C712552C2D6FA1F700536BF7 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -92,6 +100,10 @@
 		C7600B132D6E43BD001C3781 /* Prize Snap */ = {
 			isa = PBXGroup;
 			children = (
+				434FE0E02DA5A36C0087D665 /* TargetData.json */,
+				434FE0E42DA5A3800087D665 /* ACMEData.json */,
+				434FE0DE2DA5A3620087D665 /* WalmartData.json */,
+				434FE0E22DA5A3740087D665 /* GiantData.json */,
 				C7600B292D6E496A001C3781 /* Views */,
 				C7600B282D6E4961001C3781 /* Model */,
 				C7600B142D6E43BD001C3781 /* Prize_SnapApp.swift */,
@@ -202,9 +214,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				434FE0E12DA5A36C0087D665 /* TargetData.json in Resources */,
 				C7600B1C2D6E43BF001C3781 /* Preview Assets.xcassets in Resources */,
 				C7600B192D6E43BF001C3781 /* Assets.xcassets in Resources */,
+				434FE0DF2DA5A3620087D665 /* WalmartData.json in Resources */,
 				C71255362D6FA33700536BF7 /* GoogleService-Info.plist in Resources */,
+				434FE0E52DA5A3800087D665 /* ACMEData.json in Resources */,
+				434FE0E32DA5A3740087D665 /* GiantData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

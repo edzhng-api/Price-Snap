@@ -22,7 +22,6 @@ struct ShoppingListView: View {
                 .padding()
 
             ScrollView {
-                // Filter products by checking if the product's ID is in the likedProductIds array
                 ForEach(products.filter { likedProductIds.contains($0.id) }, id: \.id) { product in
                     HStack {
                         AsyncImage(url: URL(string: product.image)) { phase in
