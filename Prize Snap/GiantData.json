@@ -2,144 +2,204 @@
   "name": "GiantFoods",
   "products": [
         {
-      "name": "Apple",
+      "name": "Gala Apple",
         "price": 0.84,
       "link": "https://res.cloudinary.com/syndigo/image/fetch/f_jpg/https://assets.edgenet.com/74802e8a-9e06-4df5-b61a-d58099e4ccdb%3Fsize=600x600",
       "image": "https://res.cloudinary.com/syndigo/image/fetch/f_jpg/https://assets.edgenet.com/74802e8a-9e06-4df5-b61a-d58099e4ccdb%3Fsize=600x600",
         "store": "Giant"
     },
     {
-        "name": "Tomato",
+        "name": "Greenhouse Tomatoes",
           "price": 1.90,
         "link": "https://giantfood.com/product/greenhouse-tomatoes-1-ea/126173",
         "image": "https://res.cloudinary.com/syndigo/image/fetch/f_jpg/https://assets.edgenet.com/8defafd0-abcc-4aac-88b4-f0e2ed7475bf%3Fsize=600x600",
         "store": "Giant"
     },
     {
-        "name": "Cake",
+        "name": "Giant Bakery Chocolate Brownie Bash Cake 4 Inch",
           "price": 8.99,
         "link": "https://giantfood.com/product/giant-bakery-chocolate-brownie-bash-cake-4-inch-12-oz-pkg/218618",
         "image": "https://i5.peapod.com/c/OD/ODU2B.png",
         "store": "Giant"
     },{
-        "name": "Banana",
+        "name": "Yellow Bananas apx 4-6 ct",
           "price": 1.52,
         "link": "https://giantfood.com/product/yellow-bananas-apx-4-6-ct-1-bunch/197476",
         "image": "https://i5.peapod.com/c/DF/DFE08.jpg",
         "store": "Giant"
     },{
-        "name": "Orange",
+        "name": "Navel Orange",
           "price": 0.99,
         "link": "https://giantfood.com/product/navel-orange-1-ea/118566",
         "image": "https://assets.syndigo.cloud/cdn/8fb515d5-cf8a-476d-9e5c-14636b684412/fileType_jpg;size_600x600/8fb515d5-cf8a-476d-9e5c-14636b684412",
         "store": "Giant"
     },{
-        "name": "Lettuce",
+        "name": "Iceberg Lettuce",
           "price": 1.88,
         "link": "https://giantfood.com/product/iceberg-lettuce-1-head/118607",
         "image": "https://i5.peapod.com/c/3Y/3YX12.jpg",
         "store": "Giant"
     },{
-        "name": "Milk",
-          "price": 6.59,
-        "link": "https://giantfood.com/product/lactaid-lactose-free-vitamin-d-milk-96-oz-jug/134377",
-        "image": "https://assets.syndigo.cloud/cdn/d3129234-8e03-4782-a399-38fe9cf99cf5/fileType_jpg;size_600x600/d3129234-8e03-4782-a399-38fe9cf99cf5",
-        "store": "Giant"
-    },{
-        "name": "Eggs",
+        "name": "Giant Large White Eggs",
           "price": 5.29,
         "link": "https://giantfood.com/product/giant-large-white-eggs-1-doz/57872",
         "image": "https://res.cloudinary.com/syndigo/image/fetch/f_jpg/https://assets.edgenet.com/7676aedb-8fbb-4863-ae88-9304a5f3924a%3Fsize=600x600",
         "store": "Giant"
     },{
-        "name": "Butter",
+        "name": "Land O Lakes Salted Butter Sticks - 4 ct",
           "price": 6.19,
         "link": "https://giantfood.com/product/land-o-lakes-salted-butter-sticks-4-ct-16-oz-box/3241",
         "image": "https://i5.peapod.com/c/AT/AT8U9.png",
         "store": "Giant"
     },{
-        "name": "Bread",
+        "name": "Wonder Classic White Sliced Bread",
           "price": 2.99,
         "link": "https://giantfood.com/product/wonder-classic-white-sliced-bread-20-oz-pkg/35923",
         "image": "https://assets.syndigo.cloud/cdn/5a7b54b8-7bb5-4d49-81f1-e6413477ddda/fileType_jpg;size_600x600/5a7b54b8-7bb5-4d49-81f1-e6413477ddda",
         "store": "Giant"
     },{
-        "name": "Chips",
+        "name": "Ruffles Original Potato Chips",
           "price": 5.99,
         "link": "https://giantfood.com/product/ruffles-original-potato-chips-8.5-oz-bag/12822",
         "image": "https://assets.syndigo.cloud/cdn/36cdc45b-d12a-4c6b-9a82-98f9f22cfee8/fileType_jpg;size_600x600/36cdc45b-d12a-4c6b-9a82-98f9f22cfee8",
         "store": "Giant"
     },{
-        "name": "Crackers",
+        "name": "Nabisco Ritz Original Crackers Fresh Stacks - 8 ct",
           "price": 5.49,
         "link": "https://giantfood.com/product/nabisco-ritz-original-crackers-fresh-stacks-8-ct-11.8-oz-box/151176",
         "image": "https://assets.syndigo.cloud/cdn/6801b2ed-e30c-4fd6-85d0-39e331b9c939/fileType_jpg;size_600x600/6801b2ed-e30c-4fd6-85d0-39e331b9c939",
         "store": "Giant"
     },{
-        "name": "Soup",
+        "name": "Campbell's Chunky Savory Chicken with White & Wild Rice Soup",
           "price": 2.50,
         "link": "https://giantfood.com/product/campbells-chunky-savory-chicken-with-white-wild-rice-soup-18.8-oz-can/7055",
         "image": "https://assets.syndigo.cloud/cdn/a64d2acd-656f-425b-aeae-e9b8aa0f953f/fileType_jpg;size_600x600/a64d2acd-656f-425b-aeae-e9b8aa0f953f",
         "store": "Giant"
     },{
-        "name": "Pasta",
+        "name": "Barilla Fettuccine Pasta",
           "price": 2.09,
         "link": "https://giantfood.com/product/barilla-fettuccine-pasta-16-oz-box/103575",
         "image": "https://assets.syndigo.cloud/cdn/d50ff9fb-928f-4d1b-8182-9fc7032ce1cd/fileType_jpg;size_600x600/d50ff9fb-928f-4d1b-8182-9fc7032ce1cd",
         "store": "Giant"
     },{
-        "name": "Cereal",
-          "price": 5.29,
-        "link": "https://assets.syndigo.cloud/cdn/d50ff9fb-928f-4d1b-8182-9fc7032ce1cd/fileType_jpg;size_600x600/d50ff9fb-928f-4d1b-8182-9fc7032ce1cd",
-        "image": "https://i5.peapod.com/c/IZ/IZENG.png",
-        "store": "Giant"
-    },{
-        "name": "Cheese",
+        "name": "Giant Deli White American Cheese (Thin Sliced)",
           "price": 4.50,
         "link": "https://giantfood.com/product/giant-deli-white-american-cheese-thin-sliced-apx-1-2-lb/106692",
         "image": "https://assets.syndigo.cloud/cdn/0f002c80-2a3a-4e69-9006-b754a6f5593a/fileType_jpg;size_600x600/0f002c80-2a3a-4e69-9006-b754a6f5593a",
         "store": "Giant"
     },{
-        "name": "Beef",
+        "name": "Giant All Natural 80% Lean 20% Fat Ground Beef Fresh",
           "price": 6.59,
         "link": "https://giantfood.com/product/giant-all-natural-80-lean-20-fat-ground-beef-fresh-apx-1.2-lb/59367",
         "image": "https://assets.syndigo.cloud/cdn/0cb62ac8-c617-492c-92e9-5d01b1546d2f/fileType_jpg;size_600x600/0cb62ac8-c617-492c-92e9-5d01b1546d2f",
         "store": "Giant"
     },{
-        "name": "Chicken",
+        "name": "Perdue Natural Boneless Skinless Chicken Breasts - 2-3 ct",
           "price": 8.24,
         "link": "https://giantfood.com/product/perdue-natural-boneless-skinless-chicken-breasts-2-3-ct-apx-1.5-lb/11774",
         "image": "https://assets.syndigo.cloud/cdn/fc31cd2d-4744-4cc6-adfa-4cc32b8aebad/fileType_jpg;size_600x600/fc31cd2d-4744-4cc6-adfa-4cc32b8aebad",
         "store": "Giant"
     },{
-        "name": "Pork",
+        "name": "Giant Natural Ground Pork Fresh",
           "price": 6.24,
         "link": "https://giantfood.com/product/giant-natural-ground-pork-fresh-apx-1.2-lb/210717",
         "image": "https://assets.syndigo.cloud/cdn/04308c0a-cf86-4040-b960-d7c007b7e3e2/fileType_jpg;size_600x600/04308c0a-cf86-4040-b960-d7c007b7e3e2",
         "store": "Giant"
     },{
-        "name": "Ham",
-          "price": 5.49,
-        "link": "https://giantfood.com/product/smithfield-prime-fresh-delicatessen-honey-ham-with-natural-juices-8-oz-pkg/267906",
-        "image": "https://assets.syndigo.cloud/cdn/0bec518f-77c8-4638-b5e8-401e7ac26a70/fileType_jpg;size_600x600/0bec518f-77c8-4638-b5e8-401e7ac26a70",
-        "store": "Giant"
-    },{
-        "name": "Turkey",
+        "name": "Applegate Naturals Antibiotic Free Smoked Turkey Breast Sliced",
           "price": 7.49,
         "link": "https://giantfood.com/product/applegate-naturals-antibiotic-free-smoked-turkey-breast-sliced-7-oz-pkg/130033",
         "image": "https://assets.syndigo.cloud/cdn/cec65f17-4537-4118-bea8-82d712c180ef/fileType_jpg;size_600x600/cec65f17-4537-4118-bea8-82d712c180ef",
         "store": "Giant"
     },{
-        "name": "Yogurt",
+        "name": "Chobani Non Fat Strawberry on the Bottom Greek Yogurt Cup",
           "price": 1.00,
         "link": "https://giantfood.com/product/chobani-non-fat-strawberry-on-the-bottom-greek-yogurt-cup-5.3-oz-cup/153713",
         "image": "https://assets.syndigo.cloud/cdn/96623723-f9fd-4675-ae3b-e9428f8be11e/fileType_jpg;size_600x600/96623723-f9fd-4675-ae3b-e9428f8be11e",
         "store": "Giant"
     },{
-        "name": "Beans",
+        "name": "Bush's Best Original Baked Beans",
           "price": 2.19,
         "link": "https://giantfood.com/product/bushs-best-baked-beans-original-8.3-oz-can/4006",
         "image": "https://assets.syndigo.cloud/cdn/bfd84e54-0938-41a5-a7a7-d24cea20f865/fileType_jpg;size_600x600/bfd84e54-0938-41a5-a7a7-d24cea20f865",
+        "store": "Giant"
+    },{
+        "name": "Maruchan Instant Lunch Chicken Flavor Ramen Noodle Soup Cup - 6 ct",
+          "price": 2.50,
+        "link": "https://giantfood.com/product/maruchan-instant-lunch-chicken-flavor-ramen-noodle-soup-cup-6-ct-13.5-oz-pkg/20166",
+        "image": "https://res.cloudinary.com/syndigo/image/fetch/f_jpg/https://assets.edgenet.com/4ffcc4c0-30d8-4b56-ae12-e8e78d12c7c0%3Fsize=600x600",
+        "store": "Giant"
+    },{
+        "name": "Simply Pulp Free Orange Juice",
+          "price": 5.09,
+        "link": "https://giantfoodstores.com/product/simply-pulp-free-orange-juice-52-oz-btl/124873",
+        "image": "https://assets.syndigo.cloud/cdn/3c9c1dc5-d084-40fc-8890-fc99be88f423/fileType_jpg;size_600x600/3c9c1dc5-d084-40fc-8890-fc99be88f423",
+        "store": "Giant"
+    },{
+        "name": "Peaches",
+          "price": 2.23,
+        "link": "https://giantfood.com/product/peaches-1-ea/118614",
+        "image": "https://i5.peapod.com/c/PM/PM6CR.jpg",
+        "store": "Giant"
+    },{
+        "name": "Broccoli Crowns",
+          "price": 1.83,
+        "link": "https://giantfood.com/product/broccoli-crowns-1-crown/118645",
+        "image": "https://assets.syndigo.cloud/cdn/c4b3c2eb-ec60-4157-b4ad-c4967af464b3/fileType_jpg;size_600x600/c4b3c2eb-ec60-4157-b4ad-c4967af464b3",
+        "store": "Giant"
+    },{
+        "name": "Ripe Hass Avocados",
+          "price": 1.88,
+        "link": "https://giantfood.com/product/ripe-hass-avocados-1-ea/123670",
+        "image": "https://res.cloudinary.com/syndigo/image/fetch/f_jpg/https://assets.edgenet.com/5464ceac-338b-4ae0-bb14-325ce7a3597f%3Fsize=600x600",
+        "store": "Giant"
+    },{
+        "name": "Bartlett Pears",
+          "price": 0.99,
+        "link": "https://giantfood.com/product/bartlett-pears-1-ea/118640",
+        "image": "https://i5.peapod.com/c/J1/J18UB.jpg",
+        "store": "Giant"
+    },{
+        "name": "Mission Flour Tortillas Soft Taco Size - 10 ct",
+          "price": 3.99,
+        "link": "https://giantfood.com/product/mission-flour-tortillas-soft-taco-size-10-ct-17.5-oz-pkg/18385",
+        "image": "https://res.cloudinary.com/syndigo/image/fetch/f_jpg/https://assets.edgenet.com/6921e532-fde5-4c2e-8eb6-52fb51e62df5%3Fsize=600x600",
+        "store": "Giant"
+    },{
+        "name": "Deer Park 100% Natural Spring Water - 24 pk",
+          "price": 6.49,
+        "link": "https://giantfood.com/product/deer-park-100-natural-spring-water-24-pk-16.9-oz-btl/132223",
+        "image": "https://assets.syndigo.cloud/cdn/309030a0-ff46-44d8-a99a-957671130603/fileType_jpg;size_600x600/309030a0-ff46-44d8-a99a-957671130603",
+        "store": "Giant"
+    },{
+        "name": "St. Louis Style Pork Spareribs Frozen",
+          "price": 13.72,
+        "link": "https://giantfood.com/product/st.-louis-style-pork-spareribs-frozen-apx-2.75-lb/218524",
+        "image": "https://assets.syndigo.cloud/cdn/c0bba8e2-d714-4110-880a-345d455d31be/fileType_jpg;size_600x600/c0bba8e2-d714-4110-880a-345d455d31be",
+        "store": "Giant"
+    },{
+        "name": "Giant Bleached All Purpose Flour",
+          "price": 2.59,
+        "link": "https://giantfood.com/product/giant-bleached-all-purpose-flour-5-lb-bag/57522",
+        "image": "https://assets.syndigo.cloud/cdn/daab353a-ae4c-4d69-849d-cb08dbf792cc/fileType_jpg;size_600x600/daab353a-ae4c-4d69-849d-cb08dbf792cc",
+        "store": "Giant"
+    },{
+        "name": "Giant Iodized Salt",
+          "price": 0.89,
+        "link": "https://giantfood.com/product/giant-iodized-salt-26-oz-can/58084",
+        "image": "https://res.cloudinary.com/syndigo/image/fetch/f_jpg/https://assets.edgenet.com/bcf67066-76bc-4d5d-91b3-16224639d3de%3Fsize=600x600",
+        "store": "Giant"
+    },{
+        "name": "McCormick Pure Ground Black Pepper",
+          "price": 4.99,
+        "link": "https://giantfood.com/product/mccormick-pure-ground-black-pepper-3-oz-tin/321216",
+        "image": "https://assets.syndigo.cloud/cdn/a75bffa9-c73d-4f3d-bc63-3c3446dd9838/fileType_jpg;size_600x600/a75bffa9-c73d-4f3d-bc63-3c3446dd9838",
+        "store": "Giant"
+    },{
+        "name": "Untrimmed Sweet Corn",
+          "price": 0.75,
+        "link": "https://giantfood.com/product/untrimmed-sweet-corn-1-ear/124833",
+        "image": "https://i5.peapod.com/c/73/73869.jpg",
         "store": "Giant"
     }
   ]
