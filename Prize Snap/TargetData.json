@@ -2,171 +2,267 @@
   "name": "Target",
   "products": [
     {
-        "name": "Apple",
+        "name": "Organic Gala Apples - 2lb Bag - Good & Gather™",
           "price": 3.99,
         "link": "https://www.target.com/p/organic-gala-apples-2lb-bag-good-38-gather-8482/-/A-85787732#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_687055d3-924f-4b3b-bf2d-1dfcb0488fa7?wid=1200&hei=1200&qlt=80&fmt=webp",
         "store": "Target"
     },
     {
-        "name": "Tomato",
+        "name": "Organic On-The-Vine Tomatoes - 1lb - Good & Gather™",
           "price": 3.99,
         "link": "https://www.target.com/p/organic-on-the-vine-tomatoes-1lb-good-38-gather-8482/-/A-85813668#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_3b0aac05-0c92-4d2f-8475-dfce5374a12e?wid=800&hei=800&qlt=80&fmt=webp",
         "store": "Target"
     },
     {
-        "name": "Cake",
+        "name": "Chocolate Celebration Cake - 16oz",
           "price": 6.49,
         "link": "https://www.target.com/p/chocolate-celebration-cake-16oz-favorite-day-8482/-/A-90784330#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_0d9ed48b-e92b-4395-8b1e-a1f64b1a1948?wid=626&hei=626&qlt=80&fmt=pjpeg",
         "store": "Target"
     },
     {
-        "name": "Banana",
+        "name": "Banana - each - Good & Gather™",
           "price": 0.29,
         "link": "https://www.target.com/p/banana-each-good-38-gather-8482/-/A-15013944#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_cf4773e6-afec-4aa1-89e7-74b7dfc09973?wid=800&hei=800&qlt=80&fmt=webp",
         "store": "Target"
     },
     {
-        "name": "Orange",
+        "name": "Sun Beams Mandarin Oranges - 3lb - Good & Gather™",
           "price": 4.29,
         "link": "https://www.target.com/p/sun-beams-mandarin-oranges-3lb-good-38-gather-8482/-/A-87689905#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_7a8ab3a8-3364-49d2-8e53-1b27265232a7?wid=800&hei=800&qlt=80&fmt=webp",
         "store": "Target"
     },
     {
-        "name": "Lettuce",
+        "name": "Iceberg Lettuce Head - each",
           "price": 2.19,
         "link": "https://www.target.com/p/iceberg-lettuce-head-each/-/A-14919690#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_b4eb1390-6de9-4ed1-9005-1c8b5e4d146f?wid=800&hei=800&qlt=80&fmt=webp",
         "store": "Target"
     },
     {
-        "name": "Milk",
+        "name": "Milk - Good & Gather™",
           "price": 5.29,
         "link": "https://www.target.com/p/milk-good-gather/-/A-94602358?preselect=13276134#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_49891b88-b609-465f-8c8d-aef748abc7dc?wid=800&hei=800&qlt=80&fmt=webp",
         "store": "Target"
     },
     {
-        "name": "Eggs",
+        "name": "Grade A Large Eggs - 12ct - Good & Gather™",
           "price": 4.29,
         "link": "https://www.target.com/p/grade-a-large-eggs-12ct-good-38-gather-8482-packaging-may-vary/-/A-14713534#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_393a7c9a-e12f-4983-8f4a-e58100a6192d?wid=800&hei=800&qlt=80&fmt=webp",
         "store": "Target"
     },
     {
-        "name": "Butter",
+        "name": "Salted Butter - 1lb - Good & Gather™",
           "price": 4.29,
         "link": "https://www.target.com/p/salted-butter-1lb-good-gather-8482/-/A-54445965#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_0b2f4f85-39f9-459d-89da-245737d406a1?wid=800&hei=800&qlt=80&fmt=webp",
         "store": "Target"
     },
     {
-        "name": "Bread",
+        "name": "Sara Lee Artesano Bread - 20oz",
           "price": 3.49,
         "link": "https://www.target.com/p/sara-lee-artesano-bread-20oz/-/A-39602274#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_6c8d23e3-bad5-422a-b0ec-068c4fcd1541?wid=800&hei=800&qlt=80&fmt=webp",
         "store": "Target"
     },
     {
-        "name": "Chips",
+        "name": "Doritos Nacho Cheese Tortilla Chips - 9.25oz",
           "price": 5.19,
         "link": "https://www.target.com/p/doritos-nacho-cheese-chips-9-25oz/-/A-14930889#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_b1b635cd-e3b3-439a-8de6-9ee3786a72d5?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Crackers",
+        "name": "Cheez-It Original Baked Snack Crackers - 12.4oz",
           "price": 4.29,
         "link": "https://www.target.com/p/cheez-it-original-baked-snack-crackers-12-4oz/-/A-13009781#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_a31f2de4-efe6-4a85-b79c-98e6a411c934?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Soup",
+        "name": "Campbell's Condensed Cream of Chicken Soup - 10.5oz",
           "price": 1.29,
         "link": "https://www.target.com/p/campbell-s-condensed-cream-of-chicken-soup-10-5oz/-/A-14770107#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_2f7147fa-39d7-40fd-a9a9-9882cd268eb8?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Pasta",
+        "name": "Barilla Penne Pasta - 16oz",
           "price": 1.99,
         "link": "https://www.target.com/p/barilla-penne-pasta-16oz/-/A-13156215#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_5ae5aa78-6d3d-4691-add6-e74acd3c45d4?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Cereal",
+        "name": "General Mills Honey Nut Cheerios Breakfast Cereal - 18.8oz",
           "price": 5.69,
         "link": "https://www.target.com/p/general-mills-cheerios-honey-nut-cereal/-/A-89089767?preselect=81875234#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_fecce186-557c-4736-b0a0-28e7735a3ea0?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Cheese",
+        "name": "Shredded Mexican-Style Cheese - 8oz - Good & Gather™",
           "price": 2.19,
         "link": "https://www.target.com/p/shredded-mexican-style-cheese-8oz-good-38-gather-8482/-/A-54337113#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_46734303-d315-433e-b05c-5b520e7d0f39?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Beef",
+        "name": "All Natural 93/7 Ground Beef - 1lb - Good & Gather™",
           "price": 7.49,
         "link": "https://www.target.com/p/all-natural-93-7-ground-beef-1lb-good-38-gather-8482/-/A-13288296#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_5c08b4e9-aabc-4b79-a579-0e33b9f849c7?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Chicken",
+        "name": "Conventional Boneless Skinless Chicken Breast Value Pack - 2.5-5.25 lbs - price per lb - Good & Gather™",
           "price": 13.45,
         "link": "https://www.target.com/p/conventional-boneless-skinless-chicken-breast-value-pack-2-5-5-25-lbs-price-per-lb-good-38-gather-8482/-/A-86676070#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_52111b5c-37d5-4ef7-91d4-b3a4aa0162f0?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Pork",
+        "name": "Boneless Thin Cut Pork Chop - price per lb - Good & Gather™",
           "price": 6.99,
         "link": "https://www.target.com/p/boneless-thin-cut-pork-chop-price-per-lb-good-38-gather-8482/-/A-85458911#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_cba96c94-d561-4b1a-8fb2-8da6ff3a0716?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Ham",
+        "name": "Hillshire Farms Ultra Thin Deli Select Honey Ham - 9oz",
           "price": 4.99,
         "link": "https://www.target.com/p/hillshire-farms-ultra-thin-deli-select-honey-ham-9oz/-/A-13378943#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_ec8d07b6-f981-4176-837f-ae4913e42e2e?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Turkey",
+        "name": "Lower Sodium Oven Roasted Turkey Breast Ultra-Thin Deli Slices - 8oz - Good & Gather™",
           "price": 4.29,
         "link": "https://www.target.com/p/lower-sodium-oven-roasted-turkey-breast-ultra-thin-deli-slices-8oz-good-38-gather-8482/-/A-54528286#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_258b8f63-c64b-45ef-952a-10eb10fbbb06?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Yogurt",
+        "name": "Greek Plain Nonfat Yogurt - 32oz - Good & Gather™",
           "price": 3.99,
         "link": "https://www.target.com/p/greek-plain-nonfat-yogurt-32oz-good-38-gather-8482/-/A-78362087#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_08a934cb-a966-4011-9d23-c5f0e1c76b31?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Beans",
+        "name": "Low Sodium Black Beans - 15.5oz - Good & Gather™",
           "price": 0.99,
         "link": "https://www.target.com/p/low-sodium-black-beans-15-5oz-good-38-gather-8482/-/A-78666534#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_075ef3ef-a1a2-4279-afc8-0e3148832b85?qlt=85&fmt=webp&hei=500&wid=500",
         "store": "Target"
     },
     {
-        "name": "Instant Ramen",
+        "name": "Maruchan Souper 6-Pack Shrimp Ramen Noodle Soup - 18oz/6ct",
           "price": 2.49,
         "link": "https://www.target.com/p/maruchan-souper-6-pack-shrimp-ramen-noodle-soup-18oz-6ct/-/A-47111326#lnk=sametab",
         "image": "https://target.scene7.com/is/image/Target/GUEST_362ceedb-e844-4973-ba8b-201ad454e144?qlt=85&fmt=webp&hei=500&wid=500",
+        "store": "Target"
+    },{
+        "name": "Simply Orange Pulp Free Juice - 52 fl oz",
+        "price": 4.49,
+        "link": "https://www.target.com/p/simply-orange-pulp-free-juice-52-fl-oz/-/A-13183052#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_2b7f75ea-fbb8-4767-8b1f-6bb809bfe214?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Sliced Peaches in 100% Juice 14.5oz - Market Pantry",
+        "price": 1.79,
+        "link": "https://www.target.com/p/sliced-peaches-in-100-juice-14-5oz-market-pantry-8482/-/A-13742540#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_7e43d095-827d-49a8-a2d3-a1e54e326d2c?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Broccoli Florets - Good & Gather",
+        "price": 2.69,
+        "link": "https://www.target.com/p/broccoli-florets-good-gather/-/A-94669572?preselect=54553288#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_a4bbf97d-e8ce-4a1a-9c53-21d0ea493387?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Avocado - each",
+        "price": 0.75,
+        "link": "https://www.target.com/p/avocado-each/-/A-47095644#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_c427dad1-6e34-475f-a914-e7d19d36ec4a?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Kid-Sized Anjou Pears - 3lb Bag - Good & Gather",
+        "price": 6.99,
+        "link": "https://www.target.com/p/kid-sized-anjou-pears-3lb-bag-good-38-gather-8482/-/A-79124793#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_90cee81a-6044-4474-b339-a9dadb40e69f?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Mission Carb Balance Taco Size Soft flour Tortillas - 12oz/8ct",
+        "price": 4.79,
+        "link": "https://www.target.com/p/mission-carb-balance-taco-size-soft-flour-tortillas-12oz-8ct/-/A-13728430#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_6cfd8801-e7fe-42b4-8cb9-6bb878eacf5d?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Purified Water - 128 fl oz (1gal) - Good & Gather",
+        "price": 0.99,
+        "link": "https://www.target.com/p/purified-water-128-fl-oz-1gal-good-38-gather-8482/-/A-54444789#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_939f41df-f4e9-4ea4-aa0f-f9f55c00e634?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Country Style Pork Ribs - price per lb - Good & Gather",
+        "price": 7.90,
+        "link": "https://www.target.com/p/country-style-pork-ribs-price-per-lb-good-38-gather-8482/-/A-85458908#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_7c6049fe-80b8-4788-bb24-24914cf3a393?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "King Arthur Flour Unbleached All-Purpose Flour - 5lbs",
+        "price": 6.59,
+        "link": "https://www.target.com/p/king-arthur-flour-unbleached-all-purpose-flour-5lbs/-/A-14777928#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_50550759-43ec-4167-bb42-2a4db022b7c7?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Iodized Salt - 26oz - Good & Gather",
+        "price": 0.89,
+        "link": "https://www.target.com/p/iodized-salt-26oz-good-38-gather-8482/-/A-78140513#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_69191769-842b-4512-85f6-36f4f21ecbf5?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Ground Black Pepper - 3oz - Good & Gather",
+        "price": 3.59,
+        "link": "https://www.target.com/p/ground-black-pepper-3oz-good-38-gather-8482/-/A-77585121#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_07bda9bb-c87f-4a2d-b5b5-68c89327de98?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Golden Sweet Whole Kernel Corn - 15.25oz - Good & Gather",
+        "price": 0.85,
+        "link": "https://www.target.com/p/golden-sweet-whole-kernel-corn-15-25oz-good-38-gather-8482/-/A-79466788#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_ebf50857-949d-4d36-a92c-ecc5c9ddce4b?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Jasmine Rice - 2lbs - Good & Gather",
+        "price": 3.39,
+        "link": "https://www.target.com/p/jasmine-rice-2lbs-good-38-gather-8482/-/A-54604313#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_ff2f3e51-6753-4ed8-846d-f6329531e50d?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Coca-Cola Soda - 12pk/12 fl oz Cans",
+        "price": 7.99,
+        "link": "https://www.target.com/p/coca-cola-12pk-12-fl-oz-cans/-/A-12953464#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_f9fb8f2c-aa8a-4ced-b552-337fd1200df7?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Fanta Orange Soda - 12pk/12 fl oz Cans",
+        "price": 7.99,
+        "link": "https://www.target.com/p/fanta-orange-soda-12pk-12-fl-oz-cans/-/A-12953522#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_b7b75ff1-fe8e-4039-84b0-dde9d8cbc52a?wid=800&hei=800&qlt=80&fmt=webp",
+        "store": "Target"
+    },{
+        "name": "Sprite Soda - 12pk/12 fl oz Cans",
+        "price": 7.99,
+        "link": "https://www.target.com/p/sprite-12pk-12-fl-oz-cans/-/A-12953469#lnk=sametab",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_0bbfadc4-7eba-49b3-a608-7ff33e7b11f7?wid=800&hei=800&qlt=80&fmt=webp",
         "store": "Target"
     }
   ]
