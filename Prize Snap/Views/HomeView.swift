@@ -311,28 +311,3 @@ struct HomeView: View {
         }
     }
 }
-
-
-#Preview {
-    // Create mock data for the preview
-    let mockProducts = [
-         Product(id: "p1_apple", name: "Apple", price: 3.99, link: "https://example.com/apple1", image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Apple+1", store: "Giant"),
-         Product(id: "p2_banana", name: "Banana", price: 1.99, link: "https://example.com/banana1", image: "https://via.placeholder.com/150/00FF00/FFFFFF?text=Banana+1", store: "Walmart"),
-         Product(id: "p3_apple", name: "Apple", price: 4.50, link: "https://example.com/apple2", image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Apple+2", store: "Target"),
-         Product(id: "p4_orange", name: "Orange", price: 1.20, link: "https://example.com/orange1", image: "https://via.placeholder.com/150/FFA500/FFFFFF?text=Orange+1", store: "ACME"),
-         Product(id: "p5_apple", name: "Apple", price: 3.75, link: "https://example.com/apple3", image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Apple+3", store: "Giant"),
-         Product(id: "p6_milk", name: "Milk (Gallon)", price: 4.00, link: "https://example.com/milk", image: "https://via.placeholder.com/150/FFFFFF/000000?text=Milk", store: "Walmart"),
-         Product(id: "p7_apple", name: "Apple", price: 4.10, link: "https://example.com/apple4", image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Apple+4", store: "Target"),
-         Product(id: "p8_apple", name: "Apple", price: 3.50, link: "https://example.com/apple5", image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Apple+5", store: "ACME")
-     ]
-
-     let mockStore = Store(name: "Mock Store", products: mockProducts)
-
-
-    return HomeView(
-        // Pass bindings with the mock data
-        products: .constant(mockProducts), // Pass the mock data to the binding
-        store: .constant(mockStore),
-        likedProductIds: .constant(["p3_apple"]) // Example liked product
-    )
-}
