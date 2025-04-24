@@ -1,5 +1,3 @@
-
-
 //
 //  Product.swift
 //  Prize Snap
@@ -9,14 +7,15 @@
 import Foundation
 
 struct Product: Identifiable, Codable, Equatable {
-    var id = UUID()
+    var id: String
     var name: String
     var price: Double
     var link: String
     var image: String
     var store: String
 
-    init(name: String, price: Double, link: String, image: String, store: String) {
+    init(id: String = "", name: String, price: Double, link: String, image: String, store: String) {
+        self.id = link
         self.name = name
         self.price = price
         self.link = link
@@ -37,7 +36,7 @@ struct Product: Identifiable, Codable, Equatable {
         self.image = try container.decode(String.self, forKey: .image)
         self.store = try container.decode(String.self, forKey: .store)
 
-        self.id = UUID()
+        self.id = link 
     }
     
     var formattedPrice: String {
@@ -45,14 +44,7 @@ struct Product: Identifiable, Codable, Equatable {
     }
 }
 
-
-
-
 struct Store: Codable {
     let name: String
     var products: [Product]
 }
-
-
-
-
