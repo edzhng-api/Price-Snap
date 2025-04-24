@@ -1,224 +1,338 @@
 //
-//  HomeView.swift
-//  Prize Snap
+//  HomeView.swift
+//  Prize Snap
 //
-//  Created by Edison Zheng (student LM) on 2/26/25.
+//  Created by Edison Zheng (student LM) on 2/26/25.
 //
 import SwiftUI
+import Foundation // Needed for URL, UUID
 
 struct HomeView: View {
-    @Binding var products: [Product]
-    @Binding var store: Store
-    @State var allStores: [Store] = []
-    @Binding var likedProductIds: [UUID]
+    // These bindings are managed by ContentView
+    @Binding var products: [Product] // This will hold ALL products loaded from JSON
+    @Binding var store: Store // This binding seems to hold the *first* store loaded, might need clarification depending on usage
+    @Binding var likedProductIds: [String] // Binding for liked product IDs
+
+    // Internal state for HomeView
+    @State private var allStores: [Store] = [] // Stores data loaded internally
+    @State private var hasLoaded = false // Flag to load data only once
+    @State private var isLoading = true // Loading state indicator
+
     var body: some View {
         NavigationView {
             VStack {
-                ScrollView {
-                    HStack {
-                        Text("HOT DEALS")
-                            .padding(.leading, 20)
-                            .bold()
-                            .font(Constants.titleFont)
-                        Spacer()
-                    }
-
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(getTopDeals(), id: \.id) { product in
-                                VStack {
-                                    AsyncImage(url: URL(string: product.image)) { phase in
-                                        if let image = phase.image {
-                                            image
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 80, height: 80)
-                                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        } else if phase.error != nil {
-                                            Image(systemName: "photo")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 80, height: 80)
-                                                .foregroundColor(.gray)
-                                        } else {
-                                            ProgressView()
-                                                .frame(width: 80, height: 80)
-                                        }
+                if isLoading {
+                    ProgressView("Loading Products...") // Show loading indicator
+                        .padding()
+                } else if products.isEmpty {
+                     // Handle case where loading finished but no products were found
+                     Text("No products available.")
+                         .foregroundColor(.gray)
+                         .padding()
+                }
+                else {
+                    ScrollView {
+                        SectionHeader(title: "HOT DEALS")
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                // Use a NavigationLink to ProductDetailView for hot deals cards too
+                                ForEach(getTopDeals()) { product in
+                                    // Pass the product, likedProductIds binding, and the *entire* products array
+                                    NavigationLink(destination: ProductDetailView(product: product, likedProductIds: $likedProductIds, allProducts: products)) {
+                                         ProductCard(product: product, discount: discountPercentage(for: product))
                                     }
-                                    
-                                    HStack {
-                                        Text(product.name)
-                                            .font(.headline)
-                                            .multilineTextAlignment(.center)
-                                        
-                                        Spacer()
-
-                                        Text("$\(product.price, specifier: "%.2f")")
-                                            .font(.subheadline)
-                                            .foregroundColor(.green)
-                                    }
-                                    HStack {
-                                        Spacer()
-                                        Text("Save \(discountPercentage(for: product), specifier: "%.1f")%")
-                                            .font(.caption)
-                                            .bold()
-                                            .foregroundColor(.red)
-                                    }
+                                     // Ensure NavigationLink content uses .buttonStyle(.plain)
+                                     // to prevent default button appearance
+                                    .buttonStyle(.plain)
                                 }
-                                .frame(width: 120)
-                                .padding()
-                                .background(Color(.systemGray6))
-                                .cornerRadius(10)
                             }
+                            .padding(.horizontal)
+                        }
+
+                        SectionHeader(title: "For You")
+                        // Use a NavigationLink to ProductDetailView for main product rows
+                        ForEach(sortedProducts()) { product in
+                            // Pass the product, likedProductIds binding, and the *entire* products array
+                            NavigationLink(destination: ProductDetailView(product: product, likedProductIds: $likedProductIds, allProducts: products)) { // <<-- STILL PASSING 'products'
+                                ProductRow(product: product, discount: discountPercentage(for: product), storeLogo: getStoreLogo(for: product.store))
+                            }
+                             // Ensure NavigationLink content uses .buttonStyle(.plain)
+                             // to prevent default button appearance
+                            .buttonStyle(.plain)
                         }
                         .padding(.horizontal)
                     }
-
-                    HStack {
-                        Text("For You")
-                            .bold()
-                            .font(Constants.titleFont)
-                            .padding(.leading, 20)
-                        Spacer()
-                    }
-                    ForEach(sortedProducts(), id: \.id) { product in
-                        NavigationLink(destination: ProductDetailView(product: product, likedProductIds: $likedProductIds)) {
-                            HStack {
-                                AsyncImage(url: URL(string: product.image)) { phase in
-                                    if let image = phase.image {
-                                        image
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 60, height: 60)
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    } else if phase.error != nil {
-                                        Image(systemName: "photo")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 60, height: 60)
-                                            .foregroundColor(.gray)
-                                    } else {
-                                        ProgressView()
-                                            .frame(width: 60, height: 60)
-                                    }
-                                }
-
-                                VStack(alignment: .leading) {
-                                    Text(product.name)
-                                        .font(.headline)
-                                    Text("$\(product.price, specifier: "%.2f")")
-                                        .font(.subheadline)
-                                    Text("Save \(discountPercentage(for: product), specifier: "%.1f")%")
-                                        .font(.caption)
-                                        .foregroundColor(.red)
-                                    Link("Buy Now", destination: URL(string: product.link)!)
-                                        .font(.subheadline)
-                                        .foregroundColor(.blue)
-                                }
-                                Spacer()
-                                
-                                Image(getStoreLogo(for: product.store))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                            }
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(10)
-                        }
-                    }.padding(.horizontal)
                 }
             }
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear {
-            loadData()
+            // Load data only the first time HomeView appears
+            if !hasLoaded {
+                isLoading = true // Start loading indicator
+                loadData()
+                hasLoaded = true
+            }
         }
     }
+
+    // MARK: - View Components
+
+    @ViewBuilder
+    func SectionHeader(title: String) -> some View {
+        HStack {
+            Text(title)
+                .bold()
+                // Using standard font style
+                // .font(Constants.titleFont) // Use this if Constants.titleFont is defined
+                .font(.title3.bold()) // Fallback standard font
+                .padding(.leading, 20)
+            Spacer()
+        }
+        .padding(.top, 5) // Add a little space above section headers
+    }
+
+    @ViewBuilder
+    func ProductCard(product: Product, discount: Double) -> some View {
+        VStack {
+            AsyncImage(url: URL(string: product.image)) { phase in
+                switch phase {
+                case .success(let image):
+                    image.resizable()
+                case .failure(_):
+                    Image(systemName: "photo").resizable().foregroundColor(.gray)
+                default:
+                    ProgressView()
+                }
+            }
+            .scaledToFit()
+            .frame(width: 80, height: 80)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+
+            HStack {
+                Text(product.name)
+                    .font(.headline)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+                Spacer()
+                Text("$\(product.price, specifier: "%.2f")")
+                    .font(.subheadline)
+                    .foregroundColor(.green)
+            }
+             .padding(.horizontal, 5) // Added padding
+            HStack {
+                 Spacer()
+                // Only show discount if it's positive
+                if discount > 0 {
+                    Text("Save \(discount, specifier: "%.1f")%")
+                        .font(.caption)
+                        .bold()
+                        .foregroundColor(.red)
+                } else {
+                     // Add an empty space or something if no discount, to maintain layout
+                     Text("")
+                }
+            }
+            .padding(.horizontal, 5) // Added padding
+        }
+        .frame(width: 120)
+        .padding(.vertical, 5) // Adjusted padding
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
+    }
+
+    @ViewBuilder
+    func ProductRow(product: Product, discount: Double, storeLogo: String) -> some View {
+        HStack {
+            AsyncImage(url: URL(string: product.image)) { phase in
+                switch phase {
+                case .success(let image):
+                    image.resizable()
+                case .failure(_):
+                    Image(systemName: "photo").resizable().foregroundColor(.gray)
+                default:
+                    ProgressView()
+                }
+            }
+            .scaledToFit()
+            .frame(width: 60, height: 60)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+
+            VStack(alignment: .leading) {
+                Text(product.name)
+                    .font(.headline)
+                Text("$\(product.price, specifier: "%.2f")")
+                    .font(.subheadline)
+                // Only show discount if it's positive
+                if discount > 0 {
+                    Text("Save \(discount, specifier: "%.1f")%")
+                        .font(.caption)
+                        .bold()
+                        .foregroundColor(.red)
+                } else {
+                     // Add an empty space or something if no discount
+                     Text("").font(.caption)
+                }
+
+                 // Removed "Buy Now" link from ProductRow as the whole row is tappable
+                 // and the link is available in ProductDetailView
+            }
+
+            Spacer()
+
+            // Display store logo if available
+            if !storeLogo.isEmpty && storeLogo != "default_logo" {
+                 Image(storeLogo)
+                     .resizable()
+                     .scaledToFit()
+                     .frame(width: 40, height: 40)
+                     .clipShape(RoundedRectangle(cornerRadius: 5))
+            } else {
+                // Placeholder or initials if no logo
+                 Text(product.store.prefix(1))
+                     .font(.headline)
+                     .frame(width: 40, height: 40)
+                     .background(Color.blue.opacity(0.3))
+                     .cornerRadius(5)
+            }
+
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
+    }
+
+    // MARK: - Helpers
 
     func getStoreLogo(for storeName: String) -> String {
         switch storeName {
-        case "Giant": return "giant_logo"
+        case "Giant": return "giant_logo" // Make sure you have these assets
         case "Walmart": return "walmart_logo"
-        case "Costco": return "costco_logo"
-        case "Amazon": return "amazon_logo"
-        default: return "default_logo"
+        case "Target": return "target_logo"
+        case "ACME": return "acme_logo"
+        default: return "default_logo" // Or handle missing assets gracefully
         }
     }
 
-    func loadData() {
-        let storeFiles = ["GiantData", "WalmartData", "ACMEData", "TargetData"]
-        var allProducts: [Product] = []
-        var loadedStores: [Store] = []
+    // Function to extract a keyword from a product name
+    func keywordFromProductName(_ name: String) -> String {
+         // Simple approach: take words longer than 2 characters
+         let words = name
+             .lowercased()
+             .components(separatedBy: CharacterSet.alphanumerics.inverted)
+             .filter { !$0.isEmpty && $0.count > 2 }
 
-        for file in storeFiles {
-            if let url = Bundle.main.url(forResource: file, withExtension: "json") {
-                do {
-                    let data = try Data(contentsOf: url)
-                    let decoder = JSONDecoder()
-                    
-                    var decodedStore = try decoder.decode(Store.self, from: data)
-
-                    decodedStore.products = decodedStore.products.map { product in
-                        var mutableProduct = product
-                        mutableProduct.id = product.id
-                        return mutableProduct
-                    }
-
-                    allProducts.append(contentsOf: decodedStore.products)
-                    loadedStores.append(decodedStore)
-                } catch {
-                    print("Error loading \(file).json: \(error)")
-                }
-            } else {
-                print("\(file).json not found in bundle")
-            }
-        }
-
-        DispatchQueue.main.async {
-            self.products = allProducts
-            self.allStores = loadedStores
-            self.store = loadedStores.first ?? Store(name: "DefaultStore", products: [])
-        }
+         // You might need a more sophisticated keyword extraction
+         // For now, just return the name if no suitable words found
+         return words.first ?? name.lowercased() // Use the first long word, or the whole name if none
     }
 
+
+     // Finds the highest price for a *similar* product across all stores
+     // "Similar" is defined by sharing the keyword derived from the product name.
     func highestPrice(for productName: String) -> Double {
-        let allPrices = allStores.flatMap { $0.products }
-            .filter { $0.name == productName }
-            .map { $0.price }
-        
-        return allPrices.max() ?? 0
+        let keyword = keywordFromProductName(productName)
+         // Avoid returning 0 if no products match the keyword
+        let matchingProducts = allStores
+             .flatMap { $0.products } // Flatten all products from all stores into one array
+             .filter { $0.name.lowercased().contains(keyword) } // Filter by keyword presence
+             .map { $0.price } // Get just the prices
+
+         return matchingProducts.max() ?? 0 // Return the max price or 0 if no matches
     }
+
 
     func discountPercentage(for product: Product) -> Double {
         let highest = highestPrice(for: product.name)
-        guard highest > 0 else { return 0 }
+        guard highest > 0 else { return 0 } // Avoid division by zero
         return ((highest - product.price) / highest) * 100
     }
 
     func sortedProducts() -> [Product] {
-        return products.sorted { discountPercentage(for: $0) > discountPercentage(for: $1) }
+        // Sort products by discount percentage in descending order
+        products.sorted {
+            discountPercentage(for: $0) > discountPercentage(for: $1)
+        }
     }
 
     func getTopDeals() -> [Product] {
-        return products
-            .sorted { discountPercentage(for: $0) > discountPercentage(for: $1) }
-            .prefix(10)
-            .map { $0 }
+        // Take the top 10 sorted products
+        Array(sortedProducts().prefix(10))
+    }
+
+    // Loads product data from JSON files
+    func loadData() {
+        let storeFiles = ["GiantData", "WalmartData", "ACMEData", "TargetData"] // Your JSON file names
+        var allLoadedProducts: [Product] = [] // Temp array to collect all products
+        var loadedStores: [Store] = [] // Temp array to collect all stores
+
+        print("Attempting to load data from JSON files...")
+
+        for file in storeFiles {
+            guard let url = Bundle.main.url(forResource: file, withExtension: "json") else {
+                print("Error: \(file).json not found in bundle.")
+                continue // Skip to the next file
+            }
+             print("Found \(file).json at URL: \(url)")
+
+            do {
+                let data = try Data(contentsOf: url)
+                var decodedStore = try JSONDecoder().decode(Store.self, from: data)
+                print("Successfully decoded data for store: \(decodedStore.name)")
+
+                // Assign a unique ID to each product, using link as ID
+                decodedStore.products = decodedStore.products.map {
+                    var updated = $0
+                    // Use link as ID (assuming link is unique per product), or generate UUID if link isn't guaranteed unique
+                    updated.id = $0.link.isEmpty ? UUID().uuidString : $0.link
+                    return updated
+                }
+                print("Processed \(decodedStore.products.count) products for \(decodedStore.name).")
+
+                allLoadedProducts.append(contentsOf: decodedStore.products) // Add products to the total list
+                loadedStores.append(decodedStore) // Add the store to the stores list
+
+            } catch {
+                print("Error loading or decoding \(file).json: \(error)")
+            }
+        }
+
+         print("Finished processing JSON files. Total products found: \(allLoadedProducts.count)")
+
+        // Update state on the main thread
+        DispatchQueue.main.async {
+            self.products = allLoadedProducts // Update the bound 'products' state
+            self.allStores = loadedStores // Update the internal 'allStores' state
+            // Set the 'store' binding to the first loaded store (or handle as needed)
+             self.store = loadedStores.first ?? Store(name: "DefaultStore", products: [])
+             self.isLoading = false // Hide loading indicator
+             print("State updated: \(self.products.count) products available.")
+        }
     }
 }
 
+
 #Preview {
-    HomeView(
-        products: .constant([
-            Product(name: "Apple", price: 3.99, link: "https://example.com/apple", image: "https://example.com/apple.jpg", store: "AmazonData"),
-            Product(name: "Banana", price: 1.99, link: "https://example.com/banana", image: "https://example.com/banana.jpg", store: "WalmartData")
-        ]),
-        store: .constant(Store(name: "AmazonData", products: [
-            Product(name: "Apple", price: 0.62, link: "https://example.com/apple", image: "https://example.com/apple.jpg", store: "AmazonData")
-        ])), likedProductIds: .constant([])
+    // Create mock data for the preview
+    let mockProducts = [
+         Product(id: "p1_apple", name: "Apple", price: 3.99, link: "https://example.com/apple1", image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Apple+1", store: "Giant"),
+         Product(id: "p2_banana", name: "Banana", price: 1.99, link: "https://example.com/banana1", image: "https://via.placeholder.com/150/00FF00/FFFFFF?text=Banana+1", store: "Walmart"),
+         Product(id: "p3_apple", name: "Apple", price: 4.50, link: "https://example.com/apple2", image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Apple+2", store: "Target"),
+         Product(id: "p4_orange", name: "Orange", price: 1.20, link: "https://example.com/orange1", image: "https://via.placeholder.com/150/FFA500/FFFFFF?text=Orange+1", store: "ACME"),
+         Product(id: "p5_apple", name: "Apple", price: 3.75, link: "https://example.com/apple3", image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Apple+3", store: "Giant"),
+         Product(id: "p6_milk", name: "Milk (Gallon)", price: 4.00, link: "https://example.com/milk", image: "https://via.placeholder.com/150/FFFFFF/000000?text=Milk", store: "Walmart"),
+         Product(id: "p7_apple", name: "Apple", price: 4.10, link: "https://example.com/apple4", image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Apple+4", store: "Target"),
+         Product(id: "p8_apple", name: "Apple", price: 3.50, link: "https://example.com/apple5", image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Apple+5", store: "ACME")
+     ]
+
+     let mockStore = Store(name: "Mock Store", products: mockProducts)
+
+
+    return HomeView(
+        // Pass bindings with the mock data
+        products: .constant(mockProducts), // Pass the mock data to the binding
+        store: .constant(mockStore),
+        likedProductIds: .constant(["p3_apple"]) // Example liked product
     )
 }
-
