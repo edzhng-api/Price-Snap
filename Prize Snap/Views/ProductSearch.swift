@@ -17,7 +17,7 @@ struct ProductSearch: View {
     @State private var searchText = ""
     
     @Binding var products: [Product]
-    @Binding var likedProductIds: [UUID]
+    @Binding var likedProductIds: [String]
     
     var body: some View {
         NavigationView() {
@@ -49,7 +49,7 @@ struct ProductSearch: View {
                         .font(Constants.textFont)
                     
                     ForEach(searchSort(), id: \.id) { product in
-                        NavigationLink(destination: ProductDetailView(product: product, likedProductIds: $likedProductIds)) {
+                        NavigationLink(destination: ProductDetailView(product: product, likedProductIds: $likedProductIds, allProducts: [])) {
                             HStack {
                                 AsyncImage(url: URL(string: product.image)) { phase in
                                     if let image = phase.image {
