@@ -17,6 +17,10 @@
 		437CAE302D7F6C6600B7FF81 /* ProductSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437CAE2F2D7F6C6600B7FF81 /* ProductSearch.swift */; };
 		437CAE332D7F6CC600B7FF81 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 437CAE322D7F6CC600B7FF81 /* FirebaseFirestore */; };
 		437CAE372D7F6D2000B7FF81 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437CAE362D7F6D2000B7FF81 /* SettingsView.swift */; };
+		43CBB3222DBAB62200234893 /* ThaiChickenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CBB3212DBAB62200234893 /* ThaiChickenView.swift */; };
+		43CBB3242DBAB62F00234893 /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CBB3232DBAB62F00234893 /* RecipesView.swift */; };
+		43CBB3262DBAB65500234893 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CBB3252DBAB65500234893 /* UserDefaultManager.swift */; };
+		43CBB3282DBAB65C00234893 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CBB3272DBAB65C00234893 /* RecipeModel.swift */; };
 		C712552D2D6FA1F700536BF7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C712552C2D6FA1F700536BF7 /* LoginView.swift */; };
 		C71255302D6FA2A300536BF7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C712552F2D6FA2A300536BF7 /* FirebaseAuth */; };
 		C71255322D6FA2A300536BF7 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = C71255312D6FA2A300536BF7 /* FirebaseCore */; };
@@ -43,6 +47,10 @@
 		434FE0E42DA5A3800087D665 /* ACMEData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ACMEData.json; sourceTree = "<group>"; };
 		437CAE2F2D7F6C6600B7FF81 /* ProductSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearch.swift; sourceTree = "<group>"; };
 		437CAE362D7F6D2000B7FF81 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		43CBB3212DBAB62200234893 /* ThaiChickenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThaiChickenView.swift; sourceTree = "<group>"; };
+		43CBB3232DBAB62F00234893 /* RecipesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
+		43CBB3252DBAB65500234893 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		43CBB3272DBAB65C00234893 /* RecipeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		C712552C2D6FA1F700536BF7 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C71255352D6FA33700536BF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Prize Snap/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C71255372D6FA36800536BF7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -124,6 +132,8 @@
 		C7600B282D6E4961001C3781 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				43CBB3272DBAB65C00234893 /* RecipeModel.swift */,
+				43CBB3252DBAB65500234893 /* UserDefaultManager.swift */,
 				C712553D2D762D7F00536BF7 /* User.swift */,
 				C7600B262D6E4730001C3781 /* Constants.swift */,
 				C71255392D6FA90A00536BF7 /* Product.swift */,
@@ -134,11 +144,13 @@
 		C7600B292D6E496A001C3781 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				43CBB3212DBAB62200234893 /* ThaiChickenView.swift */,
 				434FE0B62D91CB640087D665 /* Scraper_Test.swift */,
 				437CAE362D7F6D2000B7FF81 /* SettingsView.swift */,
 				434FE0DC2D9C62420087D665 /* ShoppingListView.swift */,
 				C7600B162D6E43BD001C3781 /* ContentView.swift */,
 				C71255372D6FA36800536BF7 /* HomeView.swift */,
+				43CBB3232DBAB62F00234893 /* RecipesView.swift */,
 				C712552C2D6FA1F700536BF7 /* LoginView.swift */,
 				C712553B2D762D5900536BF7 /* RegisterView.swift */,
 				437CAE2F2D7F6C6600B7FF81 /* ProductSearch.swift */,
@@ -231,12 +243,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43CBB3222DBAB62200234893 /* ThaiChickenView.swift in Sources */,
+				43CBB3282DBAB65C00234893 /* RecipeModel.swift in Sources */,
 				C7600B172D6E43BD001C3781 /* ContentView.swift in Sources */,
+				43CBB3262DBAB65500234893 /* UserDefaultManager.swift in Sources */,
 				C7600B152D6E43BD001C3781 /* Prize_SnapApp.swift in Sources */,
 				C712552D2D6FA1F700536BF7 /* LoginView.swift in Sources */,
 				C712553C2D762D5900536BF7 /* RegisterView.swift in Sources */,
 				C712553E2D762D7F00536BF7 /* User.swift in Sources */,
 				434FE0DB2D9C623C0087D665 /* ProductDetailView.swift in Sources */,
+				43CBB3242DBAB62F00234893 /* RecipesView.swift in Sources */,
 				437CAE372D7F6D2000B7FF81 /* SettingsView.swift in Sources */,
 				C71255382D6FA36800536BF7 /* HomeView.swift in Sources */,
 				434FE0DD2D9C62420087D665 /* ShoppingListView.swift in Sources */,

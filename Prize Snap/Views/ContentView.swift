@@ -48,7 +48,7 @@ struct ContentView: View {
                 }
 
             // Product Search Tab
-            ProductSearch() // This view might also need product data
+            ProductSearch(products: $products, likedProductIds: $likedProductIds)
                 .tabItem {
                     Image(systemName: "safari")
                     Text("Search")
